@@ -1,0 +1,38 @@
+Padrão de Projeto Observer:
+
+1.	O que é:
+O Observer é um padrão de projeto comportamental que define uma dependência de um para muitos entre objetos, de modo que quando um objeto muda de estado, 
+todos os seus dependentes são notificados e atualizados automaticamente.
+2.	Problema:
+Você tem uma situação em que um objeto (o sujeito observável) precisa notificar outros objetos (os observadores) sobre mudanças em seu estado, 
+mas você deseja evitar acoplamento forte entre o sujeito e seus observadores.
+3.	Solução:
+O padrão Observer propõe uma solução onde o sujeito mantém uma lista de observadores e notifica todos eles quando seu estado muda. 
+Isso permite que os observadores sejam desacoplados do sujeito, pois eles não precisam conhecer detalhes internos uns dos outros.
+Código:
+
+CondutoMeteorologicoObservable (Sujeito Observável):
+
+Mantém uma lista de observadores (Observador).
+Permite que observadores se inscrevam (adicionarObservador) e se desinscrevam (removerObservador).
+Notifica observadores quando há uma mudança no estado (setCondicaoAtual).
+
+Observador:
+Define a interface para os observadores. No exemplo, há apenas um método, atualizar, que é chamado quando o sujeito notifica sobre uma mudança.
+Observadores Específicos (InterfaceUsuario, ServicoNotificacaoEmail, ServicoGravacaoDadosMeteorologicos):
+Implementam a interface Observador.
+Cada observador reage à atualização de maneira específica (por exemplo, mostrando na interface do usuário, enviando e-mails ou registrando dados).
+
+AplicativoPrevisaoTempo:
+Contém o método main que simula a utilização do padrão Observer.
+Cria instâncias do sujeito observável e dos observadores.
+Registra observadores no sujeito.
+Simula uma atualização nas condições meteorológicas, desencadeando a notificação aos observadores.
+
+Funcionamento Geral:
+O CondutoMeteorologicoObservable age como o sujeito observável e notifica todos os observadores quando há uma mudança nas condições meteorológicas.
+Os observadores específicos (InterfaceUsuario, ServicoNotificacaoEmail, ServicoGravacaoDadosMeteorologicos) reagem de maneiras diferentes às atualizações.
+O padrão Observer permite que você adicione novos observadores sem modificar o sujeito, facilitando a extensibilidade do sistema.
+
+Em resumo, o padrão Observer é útil quando você tem um objeto que precisa notificar outros objetos sobre mudanças, e você deseja manter uma baixa dependência entre eles. 
+No exemplo, o sujeito observável é o objeto que fornece as atualizações, e os observadores são os objetos que reagem a essas atualizações de maneiras específicas.
